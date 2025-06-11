@@ -8,7 +8,7 @@ export default function Navbar() {
 
   const menuItems = [
     { label: "About Us", path: "/about" },
-    { label: "Capabilities", path: "/capabilities" },
+    { label: "Services", path: "/service" },
     { label: "Industries", path: "/industries" },
     { label: "Insights", path: "/insights" },
     { label: "Careers", path: "/careers" },
