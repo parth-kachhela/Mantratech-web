@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 export default function Home() {
   const { scrollY } = useScroll();
   //@ts-ignore
   const textY = useTransform(scrollY, [0, 300], [0, -50]);
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -47,50 +49,7 @@ export default function Home() {
   return (
     <div className="font-sans bg-white text-gray-800">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full bg-white z-50 border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          {/* Company Logo + Name */}
-          <div className="flex items-center space-x-12">
-            <img
-              src="/blogo.png" // ← yahan apna actual image path de
-              alt="MantraTechSystem Logo"
-              className="h-16 w-16 object-contain text-orange-950"
-            />
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button onClick={() => setMenuOpen(!menuOpen)}>
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-
-          {/* Navigation items */}
-          <ul
-            className={`md:flex text-sm font-medium hidden md:flex-row space-x-6 ${
-              menuOpen ? "block" : "hidden"
-            } md:block`}
-          >
-            {[
-              "About Us",
-              "Capabilities",
-              "Industries",
-              "Insights",
-              "Careers",
-              "Contact Us",
-            ].map((item, index) => (
-              <li
-                key={index}
-                className="relative cursor-pointer hover:text-[#e60000] transition"
-              >
-                <span className="hover:border-r-4 hover:border-[#e60000] pr-2 transition-all duration-200">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden pt-20">
