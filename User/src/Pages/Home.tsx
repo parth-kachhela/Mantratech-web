@@ -83,13 +83,10 @@ export default function Home() {
           {/* Company Logo + Name */}
           <div className="flex items-center space-x-12">
             <img
-              src="/logo.png" // ← yahan apna actual image path de
+              src="/blogo.png" // ← yahan apna actual image path de
               alt="MantraTechSystem Logo"
               className="h-16 w-16 object-contain text-orange-950"
             />
-            <h1 className="text-xl font-bold text-[#e60000]">
-              Mantra<span className="text-black">Tech</span>System
-            </h1>
           </div>
 
           {/* Mobile menu button */}
@@ -130,6 +127,9 @@ export default function Home() {
       <div className="relative h-screen w-full overflow-hidden pt-20">
         <div className="absolute top-0 left-0 w-full h-full bg-white z-0 rotate-[-3deg] origin-top-left"></div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 py-32 text-left">
+          <h1 className="text-2xl mb-1 font-bold text-[#e60000]">
+            Mantra<span className="text-black">Tech</span>System
+          </h1>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
