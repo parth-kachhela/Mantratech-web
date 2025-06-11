@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 export default function Home() {
   const { scrollY } = useScroll();
+  //@ts-ignore
   const textY = useTransform(scrollY, [0, 300], [0, -50]);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -79,27 +80,48 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 w-full bg-white z-50 border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-[#e60000]">
-            Mantra<span className="text-black">Tech</span>System
-          </h1>
+          {/* Company Logo + Name */}
+          <div className="flex items-center space-x-12">
+            <img
+              src="/logo.png" // ← yahan apna actual image path de
+              alt="MantraTechSystem Logo"
+              className="h-16 w-16 object-contain text-orange-950"
+            />
+            <h1 className="text-xl font-bold text-[#e60000]">
+              Mantra<span className="text-black">Tech</span>System
+            </h1>
+          </div>
+
+          {/* Mobile menu button */}
           <div className="md:hidden">
             <button onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
+
+          {/* Navigation items */}
           <ul
-            className={`md:flex space-x-6 text-sm font-medium hidden md:flex-row ${
+            className={`md:flex text-sm font-medium hidden md:flex-row space-x-6 ${
               menuOpen ? "block" : "hidden"
             } md:block`}
           >
-            <li className="hover:text-[#e60000] cursor-pointer">About Us</li>
-            <li className="hover:text-[#e60000] cursor-pointer">
-              Capabilities
-            </li>
-            <li className="hover:text-[#e60000] cursor-pointer">Industries</li>
-            <li className="hover:text-[#e60000] cursor-pointer">Insights</li>
-            <li className="hover:text-[#e60000] cursor-pointer">Careers</li>
-            <li className="hover:text-[#e60000] cursor-pointer">Contact Us</li>
+            {[
+              "About Us",
+              "Capabilities",
+              "Industries",
+              "Insights",
+              "Careers",
+              "Contact Us",
+            ].map((item, index) => (
+              <li
+                key={index}
+                className="relative cursor-pointer hover:text-[#e60000] transition"
+              >
+                <span className="hover:border-r-4 hover:border-[#e60000] pr-2 transition-all duration-200">
+                  {item}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
@@ -197,7 +219,7 @@ export default function Home() {
             <p className="text-sm text-gray-400 mt-2">
               Email: contact@mantratechsystem.com
               <br />
-              Phone: +91-9876543210
+              Phone: +91-8200197878
             </p>
           </div>
         </div>
