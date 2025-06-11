@@ -15,62 +15,31 @@ export default function Home() {
   const services = [
     {
       title: "Healthcare Solutions",
-      features: [
-        "Telemedicine Platforms",
-        "EHR & Patient Portals",
-        "Doctor Scheduling Apps",
-        "Health Data Security",
-      ],
       image: "/images/healthcare.jpg",
     },
     {
       title: "Finance & Fintech",
-      features: [
-        "Secure Mobile Banking",
-        "Payment Gateway Integration",
-        "Loan Management Systems",
-        "Crypto Wallet Development",
-      ],
+
       image: "/images/finance.jpg",
     },
     {
       title: "Education & eLearning",
-      features: [
-        "Online Learning Portals",
-        "Virtual Classrooms",
-        "Exam & Quiz Platforms",
-        "Learning Analytics",
-      ],
+
       image: "/images/education.jpg",
     },
     {
       title: "Retail & E-Commerce",
-      features: [
-        "Custom E-Commerce Solutions",
-        "Inventory & POS Integration",
-        "Customer Loyalty Programs",
-        "Performance Optimization",
-      ],
+
       image: "/images/ecommerce.jpg",
     },
     {
       title: "Cybersecurity Services",
-      features: [
-        "Network Security Solutions",
-        "Vulnerability Assessments",
-        "Firewall & Endpoint Protection",
-        "Compliance & Risk Management",
-      ],
+
       image: "/images/cybersecurity.jpg",
     },
     {
       title: "IT Infrastructure Management",
-      features: [
-        "Server & Storage Solutions",
-        "Network Architecture Design",
-        "Cloud Infrastructure Support",
-        "24/7 Monitoring & Maintenance",
-      ],
+
       image: "/images/it-infrastructure.jpg",
     },
   ];
