@@ -1,13 +1,14 @@
 // src/pages/services.tsx
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 const services = [
   {
     title: "Custom Web Development",
     description:
       "Tailored web solutions using the latest frameworks and technologies to meet your business goals.",
-    image: "/images/web-development.jpg",
+    image: "/images/webdev.jpg",
   },
   {
     title: "Mobile App Development",
@@ -37,7 +38,7 @@ const services = [
     title: "IT Consulting",
     description:
       "Expert guidance on digital transformation, system architecture, and technology strategies.",
-    image: "/images/consulting.jpg",
+    image: "/images/it-infrastructure.jpg",
   },
 ];
 
@@ -73,7 +74,7 @@ export default function Services() {
                 <img
                   src={cap.image}
                   alt={cap.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-64 object-center group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="p-6 text-left">
                   <h3 className="text-xl font-semibold text-[#e60000] mb-2">
@@ -86,6 +87,7 @@ export default function Services() {
           </div>
         </motion.div>
       </section>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 export default function Home() {
   const { scrollY } = useScroll();
@@ -12,31 +13,31 @@ export default function Home() {
 
   const services = [
     {
-      title: "Healthcare Solutions",
+      title: "Custom Web Development",
       image: "/images/healthcare.jpg",
     },
     {
-      title: "Finance & Fintech",
+      title: "Mobile App Development",
 
       image: "/images/finance.jpg",
     },
     {
-      title: "Education & eLearning",
+      title: "Cloud & DevOps",
 
       image: "/images/education.jpg",
     },
     {
-      title: "Retail & E-Commerce",
+      title: "UI/UX Design",
 
       image: "/images/ecommerce.jpg",
     },
     {
-      title: "Cybersecurity Services",
+      title: "Cybersecurity Solutions",
 
       image: "/images/cybersecurity.jpg",
     },
     {
-      title: "IT Infrastructure Management",
+      title: "IT Consulting",
 
       image: "/images/it-infrastructure.jpg",
     },
@@ -120,37 +121,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-10 mt-10">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h4 className="text-lg font-semibold">MantraTechSystem</h4>
-            <p className="text-sm mt-2 text-gray-400">
-              Providing expert web development and IT solutions in Veraval,
-              Junagadh, and Rajkot.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold">Quick Links</h4>
-            <ul className="mt-2 text-sm text-gray-400 space-y-2">
-              <li>About Us</li>
-              <li>Capabilities</li>
-              <li>Industries</li>
-              <li>Contact Us</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold">Contact</h4>
-            <p className="text-sm text-gray-400 mt-2">
-              Email: contact@mantratechsystem.com
-              <br />
-              Phone: +91-8200197878
-            </p>
-          </div>
-        </div>
-        <div className="text-center text-gray-500 text-sm mt-8">
-          © {new Date().getFullYear()} MantraTechSystem. All rights reserved.
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
