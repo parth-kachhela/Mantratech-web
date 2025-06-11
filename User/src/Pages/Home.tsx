@@ -1,15 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
 export default function Home() {
   const { scrollY } = useScroll();
   //@ts-ignore
   const textY = useTransform(scrollY, [0, 300], [0, -50]);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
