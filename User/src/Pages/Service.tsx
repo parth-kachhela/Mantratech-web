@@ -14,19 +14,19 @@ const services = [
     title: "Mobile App Development",
     description:
       "Native and cross-platform mobile applications that deliver seamless performance and experience.",
-    image: "/images/mobile-app.jpg",
+    image: "/images/appdev.png",
   },
   {
     title: "Cloud & DevOps",
     description:
       "Scalable cloud infrastructure and DevOps automation for faster deployment and better efficiency.",
-    image: "/images/cloud.jpg",
+    image: "/images/finance.jpg",
   },
   {
     title: "UI/UX Design",
     description:
       "Crafting engaging user interfaces and experiences that drive user satisfaction and retention.",
-    image: "/images/uiux.jpg",
+    image: "/images/it-infrastructure.jpg",
   },
   {
     title: "Cybersecurity Solutions",
