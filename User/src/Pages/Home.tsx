@@ -51,7 +51,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative h-screen w-full overflow-hidden pt-20">
         <div className="absolute top-0 left-0 w-full h-full bg-white z-0 rotate-[-3deg] origin-top-left"></div>
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-32 text-left">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 text-left">
           <h1 className="text-2xl mb-1 font-bold text-[#e60000]">
             Mantra<span className="text-black">Tech</span>System
           </h1>
@@ -73,7 +73,25 @@ export default function Home() {
             businesses grow digitally with innovation and speed.
           </motion.p>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-[300px] bg-gradient-to-r from-yellow-400 via-purple-600 to-blue-600 rotate-[-3deg] origin-bottom-left" />
+        {/* Diagonal Gradient Section */}
+        <div className="relative w-full h-full overflow-hidden">
+          <div
+            className="w-full h-full bg-gradient-to-r from-yellow-400 via-purple-600 to-blue-600"
+            style={{
+              clipPath: "polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%)",
+            }}
+          >
+            {" "}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              src="/grid.mp4"
+            ></video>{" "}
+          </div>
+        </div>
       </div>
 
       {/* Services Section */}
