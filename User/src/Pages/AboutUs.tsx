@@ -66,7 +66,7 @@ export default function AboutUs() {
             src="/grid2.mp4"
           />
           {/* Optional overlay for better text readability */}
-          <div className="absolute inset-0  z-10" />
+          <div className="absolute inset-0 z-10" />
         </div>
 
         {/* Centered Content */}
