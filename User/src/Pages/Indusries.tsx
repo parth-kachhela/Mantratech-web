@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { industries } from "@/lib/utils";
+import { industries, TeamState } from "@/lib/utils";
 
 export default function Industries() {
   return (
@@ -74,10 +74,13 @@ export default function Industries() {
       <section className="bg-gradient-to-r from-[#f5f7fa] to-[#c3cfe2] py-16 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           {[
-            { label: "Projects Delivered", value: "100+" },
-            { label: "Team Members", value: "30+" },
-            { label: "Operational Cities", value: "3+" },
-            { label: "Client Satisfaction", value: "99%" },
+            { label: "Projects Delivered", value: TeamState.ProjectsDelivered },
+            { label: "Team Members", value: TeamState.EmployeesHiredMonthly },
+            { label: "Operational Cities", value: TeamState.CitiesWeServe },
+            {
+              label: "Client Satisfaction",
+              value: TeamState.ClientSatisfaction,
+            },
           ].map((stat, i) => (
             <motion.div
               key={i}

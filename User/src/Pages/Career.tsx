@@ -2,35 +2,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { jobOpenings } from "@/lib/utils";
 
 export default function Careers() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const jobOpenings = [
-    {
-      title: "Frontend Developer",
-      location: "Veraval / Remote",
-      type: "Full-time",
-      description:
-        "Build and maintain beautiful web interfaces using React and TailwindCSS.",
-    },
-    {
-      title: "Backend Developer",
-      location: "Rajkot",
-      type: "Full-time",
-      description:
-        "Design scalable APIs and services using Node.js, Express, and PostgreSQL.",
-    },
-    {
-      title: "UI/UX Designer",
-      location: "Junagadh / Remote",
-      type: "Contract",
-      description:
-        "Create intuitive design flows and user experiences for web and mobile apps.",
-    },
-  ];
 
   // Animated Stats State
   const [employees, setEmployees] = useState(0);
