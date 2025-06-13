@@ -9,7 +9,7 @@ export default function AboutUs() {
       <Navbar />
 
       {/* Hero Section with Video */}
-      <div className="relative h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <div className="relative h-[60vh] mt-20 w-full flex items-center justify-center overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
           <video
