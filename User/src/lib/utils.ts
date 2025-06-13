@@ -50,3 +50,34 @@ export const TeamState: TeamState = {
   CitiesWeServe: "2+",
   ClientSatisfaction: "99%",
 };
+
+export const teams = [
+  {
+    name: "CodeCrafters",
+    description: "Focused on building scalable web apps for modern businesses.",
+    members: ["/member1.jpg", "/member2.jpg", "/member3.jpg"],
+    fullDetails:
+      "CodeCrafters specialize in full-stack web development using React, Node.js, and modern architecture patterns. They deliver projects with performance, security, and SEO in mind.",
+  },
+  {
+    name: "AppStormers",
+    description: "Building cross-platform mobile experiences.",
+    members: ["/member4.jpg", "/member5.jpg", "/member6.jpg"],
+    fullDetails:
+      "AppStormers team crafts engaging mobile apps using Flutter, React Native and native tools, ensuring beautiful design and top performance on iOS and Android.",
+  },
+  {
+    name: "BrainBotics",
+    description: "Pioneering AI & ML-based software innovations.",
+    members: ["/member7.jpg", "/member8.jpg", "/member9.jpg"],
+    fullDetails:
+      "BrainBotics explores AI/ML-driven solutions, including predictive analytics, NLP and smart automation for industries like fintech, healthtech, and logistics.",
+  },
+  {
+    name: "PixelPulse",
+    description: "Designers of immersive UI/UX experiences.",
+    members: ["/member10.jpg", "/member11.jpg", "/member12.jpg"],
+    fullDetails:
+      "PixelPulse enhances user journeys through intuitive, accessible, and stunning design experiences. They specialize in Figma, Adobe XD, and design systems.",
+  },
+];
