@@ -1,92 +1,140 @@
-// src/pages/services.tsx
+"use client";
+
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import { CheckCircle } from "lucide-react";
 
 const services = [
   {
     title: "Custom Web Development",
-    description:
-      "Tailored web solutions using the latest frameworks and technologies to meet your business goals.",
-    image: "/images/webdev.jpg",
+    image: "/images/web.jpg",
+    points: [
+      "Responsive, SEO-friendly websites",
+      "Built with React, Next.js, and Tailwind",
+      "Fully scalable and performance-optimized",
+    ],
   },
   {
     title: "Mobile App Development",
-    description:
-      "Native and cross-platform mobile applications that deliver seamless performance and experience.",
-    image: "/images/appdev.png",
+    image: "/images/app.jpg",
+    points: [
+      "Cross-platform iOS/Android apps",
+      "Built with Flutter and React Native",
+      "Smooth animations and native experience",
+    ],
   },
   {
-    title: "Cloud & DevOps",
-    description:
-      "Scalable cloud infrastructure and DevOps automation for faster deployment and better efficiency.",
-    image: "/images/finance.jpg",
+    title: "AI & ML Solutions",
+    image: "/images/ai.jpg",
+    points: [
+      "Custom AI model integration",
+      "Predictive analytics and automation",
+      "Smart workflows with real-world impact",
+    ],
   },
   {
     title: "UI/UX Design",
-    description:
-      "Crafting engaging user interfaces and experiences that drive user satisfaction and retention.",
-    image: "/images/it-infrastructure.jpg",
+    image: "/images/ui:ux.jpg",
+    points: [
+      "Wireframes and hi-fi prototypes",
+      "Figma, Adobe XD, and design systems",
+      "User-centered accessible design",
+    ],
   },
   {
-    title: "Cybersecurity Solutions",
-    description:
-      "Robust security practices and tools to protect your digital assets and infrastructure.",
-    image: "/images/cybersecurity.jpg",
-  },
-  {
-    title: "IT Consulting",
-    description:
-      "Expert guidance on digital transformation, system architecture, and technology strategies.",
-    image: "/images/it-infrastructure.jpg",
+    title: "Cybersecurity & IT Consulting",
+    image: "/images/cyber.png",
+    points: [
+      "Risk assessment & compliance",
+      "Infrastructure hardening",
+      "Strategic digital transformation advice",
+    ],
   },
 ];
 
 export default function Services() {
   return (
-    <div className="bg-white text-gray-800 font-sans">
+    <div className="bg-white text-gray-800">
       <Navbar />
 
-      <section className="pt-28 pb-16 px-4 md:px-10 bg-gray-50 min-h-screen">
+      {/* Hero Section */}
+      <div className="relative h-[65vh] mt-20 bg-gradient-to-r from-[#e60000] to-[#600000] text-white flex items-center justify-center text-center px-4">
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            src="/servicevid.mp4"
+          />
+          {/* Optional overlay for better text readability */}
+          <div className="absolute  inset-0  z-10" />
+        </div>
         <motion.div
-          className="max-w-7xl mx-auto text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-bold text-[#e60000] mb-4">
-            Our services
-          </h2>
-          <p className="text-gray-600 text-lg mb-12">
-            Empowering your business with a full spectrum of IT services
+          <h1 className="text-5xl font-bold mb-4 drop-shadow-xl">
+            Our Services
+          </h1>
+          <p className="text-lg max-w-2xl mx-auto opacity-90">
+            Explore how MantraTechSystem helps businesses scale with modern tech
+            solutions and elegant digital experiences.
           </p>
-
-          <div className="grid md:grid-cols-2 gap-10">
-            {services.map((cap, index) => (
-              <motion.div
-                key={index}
-                className="rounded-3xl overflow-hidden shadow-md group bg-white"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 + index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <img
-                  src={cap.image}
-                  alt={cap.title}
-                  className="w-full h-64 object-center group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="p-6 text-left">
-                  <h3 className="text-xl font-semibold text-[#e60000] mb-2">
-                    {cap.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{cap.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
+      </div>
+
+      {/* Services Section */}
+      <section className="py-24 px-4 md:px-10 bg-gray-50">
+        <div className="max-w-6xl mx-auto space-y-16">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="bg-white shadow-xl rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center gap-8"
+            >
+              {/* Image */}
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full md:w-1/3 h-48 object-cover rounded-xl shadow-md"
+              />
+
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold text-[#e60000] mb-6">
+                  {service.title}
+                </h2>
+                <ul className="space-y-3 mb-6">
+                  {service.points.map((point, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-gray-700"
+                    >
+                      <CheckCircle className="w-5 h-5 text-[#e60000] mt-1" />
+                      <span className="leading-relaxed text-base">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Button */}
+                <a
+                  href="/get-service-form"
+                  className="inline-block px-6 py-2 bg-[#e60000] text-white rounded-lg shadow hover:bg-[#c40000] transition"
+                >
+                  Get Service
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </section>
+
       <Footer />
     </div>
   );
