@@ -81,3 +81,18 @@ export const teams = [
       "PixelPulse enhances user journeys through intuitive, accessible, and stunning design experiences. They specialize in Figma, Adobe XD, and design systems.",
   },
 ];
+
+export const leaders = [
+  {
+    name: "Divyesh Kachhela",
+    role: "CEO, MantraTechSystem",
+    image: "/ceo.jpeg",
+    bio: "Divyesh has transformed MantraTech into a tech powerhouse through vision-driven leadership and relentless innovation.",
+  },
+  {
+    name: "Parth kachhela",
+    role: "President, MantraTechSystem",
+    image: "/president.jpeg",
+    bio: "Parth pioneered operational excellence, leading the team to deliver 100+ successful projects across 3 cities.",
+  },
+];

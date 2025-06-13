@@ -1,22 +1,7 @@
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { teams } from "@/lib/utils";
-
-const leaders = [
-  {
-    name: "Divyesh Kachhela",
-    role: "CEO, MantraTechSystem",
-    image: "/ceo.jpeg",
-    bio: "Divyesh has transformed MantraTech into a tech powerhouse through vision-driven leadership and relentless innovation.",
-  },
-  {
-    name: "Parth kachhela",
-    role: "President, MantraTechSystem",
-    image: "/president.jpeg",
-    bio: "Parth pioneered operational excellence, leading the team to deliver 100+ successful projects across 3 cities.",
-  },
-];
+import { teams, leaders } from "@/lib/utils";
 
 export default function AboutUs() {
   return (
