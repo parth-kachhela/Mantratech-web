@@ -4,54 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { CheckCircle } from "lucide-react";
-
-const services = [
-  {
-    title: "Custom Web Development",
-    image: "/images/web.jpg",
-    points: [
-      "Responsive, SEO-friendly websites",
-      "Built with React, Next.js, and Tailwind",
-      "Fully scalable and performance-optimized",
-    ],
-  },
-  {
-    title: "Mobile App Development",
-    image: "/images/app.jpg",
-    points: [
-      "Cross-platform iOS/Android apps",
-      "Built with Flutter and React Native",
-      "Smooth animations and native experience",
-    ],
-  },
-  {
-    title: "AI & ML Solutions",
-    image: "/images/ai.jpg",
-    points: [
-      "Custom AI model integration",
-      "Predictive analytics and automation",
-      "Smart workflows with real-world impact",
-    ],
-  },
-  {
-    title: "UI/UX Design",
-    image: "/images/ui:ux.jpg",
-    points: [
-      "Wireframes and hi-fi prototypes",
-      "Figma, Adobe XD, and design systems",
-      "User-centered accessible design",
-    ],
-  },
-  {
-    title: "Cybersecurity & IT Consulting",
-    image: "/images/cyber.png",
-    points: [
-      "Risk assessment & compliance",
-      "Infrastructure hardening",
-      "Strategic digital transformation advice",
-    ],
-  },
-];
+import { services } from "@/lib/utils";
 
 export default function Services() {
   return (
