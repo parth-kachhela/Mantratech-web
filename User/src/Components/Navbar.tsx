@@ -10,7 +10,6 @@ export default function Navbar() {
     { label: "About Us", path: "/about" },
     { label: "Services", path: "/service" },
     { label: "Industries", path: "/industries" },
-    { label: "Insights", path: "/insights" },
     { label: "Careers", path: "/careers" },
     { label: "Contact Us", path: "/contact" },
   ];
