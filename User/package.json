@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
+    "@react-google-maps/api": "^2.20.6",
     "@spotlightjs/spotlight": "^3.0.0",
     "@tailwindcss/vite": "^4.1.8",
     "class-variance-authority": "^0.7.1",
