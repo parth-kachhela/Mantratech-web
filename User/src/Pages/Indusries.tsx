@@ -1,45 +1,7 @@
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-
-const industries = [
-  {
-    title: "Healthcare",
-    icon: "/industries/healthcare.jpg",
-    description:
-      "HIPAA-compliant apps, telemedicine platforms, and smart diagnostics for modern healthcare.",
-  },
-  {
-    title: "Finance",
-    icon: "/industries/banking.jpg",
-    description:
-      "Secure fintech solutions, AI-based fraud detection, and seamless payment systems.",
-  },
-  {
-    title: "Education",
-    icon: "/industries/education.png",
-    description:
-      "E-learning platforms, virtual classrooms, and student analytics built for the future.",
-  },
-  {
-    title: "Retail",
-    icon: "/industries/retail.jpg",
-    description:
-      "Omnichannel eCommerce, inventory automation, and CRM systems that boost conversions.",
-  },
-  {
-    title: "Logistics",
-    icon: "/industries/logistics.jpg",
-    description:
-      "Fleet tracking, warehouse automation, and route optimization tailored for logistics.",
-  },
-  {
-    title: "Communication",
-    icon: "/industries/communication.jpg", // Make sure this icon exists in your public/icons folder
-    description:
-      "We build real-time messaging platforms, video conferencing tools, and VoIP systems to streamline communication.",
-  },
-];
+import { industries } from "@/lib/utils";
 
 export default function Industries() {
   return (
