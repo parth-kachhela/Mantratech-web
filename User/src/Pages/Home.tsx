@@ -29,7 +29,7 @@ export default function HomePage() {
             transition={{ duration: 1 }}
             className="text-xl text-gray-600 max-w-2xl"
           >
-            We deliver IT solutions across Veraval, Junagadh, and Rajkot to help
+            We deliver IT solutions across National and InterNational to help
             businesses grow digitally with innovation and speed.
           </motion.p>
         </div>
@@ -116,7 +116,7 @@ export default function HomePage() {
               label: "Employees Hired Monthly",
               value: TeamState.EmployeesHiredMonthly,
             },
-            { label: "Cities We Serve", value: TeamState.CitiesWeServe },
+            { label: "Country We work", value: TeamState.CitiesWeServe },
             {
               label: "Client Satisfaction",
               value: TeamState.ClientSatisfaction,

@@ -47,30 +47,35 @@ export default function Navbar() {
         {/* Mobile Menu Icon */}
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-md px-4 py-4">
-          <ul className="flex flex-col space-y-4 text-sm font-medium">
-            {menuItems.map((item, index) => (
-              <li
-                key={index}
-                className="cursor-pointer hover:text-[#e60000] transition"
-                onClick={() => {
-                  navigate(item.path);
-                  setMenuOpen(false); // close menu after click
-                }}
-              >
+      {/* Mobile Navigation with animation */}
+      <div
+        className={`md:hidden transition-all duration-1000 ease-in-out overflow-hidden ${
+          menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        } bg-white backdrop-blur-md shadow-xl px-6 py-4`}
+      >
+        <ul className="flex flex-col space-y-4 text-base font-semibold text-gray-800">
+          {menuItems.map((item, index) => (
+            <li
+              key={index}
+              className="cursor-pointer relative group"
+              onClick={() => {
+                navigate(item.path);
+                setMenuOpen(false);
+              }}
+            >
+              <span className="group-hover:text-[#e60000] transition duration-200">
                 {item.label}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+              </span>
+              <div className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e60000] group-hover:w-full transition-all duration-300 ease-in-out"></div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }
