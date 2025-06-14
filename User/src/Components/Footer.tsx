@@ -5,8 +5,8 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold">MantraTechSystem</h4>
           <p className="text-sm mt-2 text-gray-400">
-            Providing expert web development and IT solutions in Veraval,
-            Junagadh, and Rajkot.
+            Delivering expert web development and IT solutions to clients across
+            India and worldwide
           </p>
         </div>
         <div>
