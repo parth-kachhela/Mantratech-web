@@ -36,7 +36,7 @@ export default function HomePage() {
         {/* Diagonal Gradient Section */}
         <div className="relative w-full h-full overflow-hidden">
           <div
-            className="w-full h-full bg-gradient-to-r"
+            className="w-full h-full"
             style={{
               clipPath: "polygon(0% 30%, 100% 0%, 100% 100%, 0% 100%)",
             }}
