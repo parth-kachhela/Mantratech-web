@@ -46,7 +46,7 @@ interface TeamState {
 
 export const TeamState: TeamState = {
   ProjectsDelivered: "100+",
-  EmployeesHiredMonthly: "30+",
+  EmployeesHiredMonthly: "3+",
   CitiesWeServe: "2+",
   ClientSatisfaction: "99%",
 };
