@@ -21,7 +21,7 @@ export default function ContactUsPage() {
   });
   const location = useLocation();
   const formRef = useRef<HTMLDivElement>(null);
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (location.state?.scrollTo === "contact-form") {
       setTimeout(() => {
@@ -45,7 +45,7 @@ export default function ContactUsPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`${backendUrl}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
