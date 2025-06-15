@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Input } from "@/Components/ui/input";
 import { Textarea } from "@/Components/ui/textarea";
 import { Button } from "@/Components/ui/button";
@@ -7,7 +7,7 @@ import Footer from "../Components/Footer";
 import { motion } from "framer-motion";
 import { OfficeMap } from "@/Components/OfficeMap";
 import { useLocation } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import axios from "axios";
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
@@ -19,19 +19,21 @@ export default function ContactUsPage() {
     other: "",
     enquiryType: "",
   });
+
   const location = useLocation();
   const formRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     if (location.state?.scrollTo === "contact-form") {
       setTimeout(() => {
         formRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 300); // delay to allow DOM to mount
+      }, 300);
     }
   }, [location]);
-
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -45,12 +47,9 @@ export default function ContactUsPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch(`"http://localhost:8080/api"/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
+      const res = await axios.post(`${backendUrl}/api/contact`, formData);
+
+      if (res.status === 200) {
         setSubmitted(true);
         setFormData({
           firstName: "",
@@ -65,16 +64,17 @@ export default function ContactUsPage() {
         alert("Failed to send message.");
       }
     } catch (error) {
+      console.error(error);
       alert("Something went wrong.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
 
-      {/* Heading with animation */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -89,14 +89,12 @@ export default function ContactUsPage() {
         </p>
       </motion.div>
 
-      {/* Map and office info section */}
       <div className="flex flex-col md:flex-row items-start justify-between p-6 md:p-10 bg-gradient-to-br from-gray-100 to-white gap-10">
         <div className="md:w-1/2">
           <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Offices</h3>
           <p className="text-gray-600 mb-6">
             Select your nearest location to get directions and support info.
           </p>
-
           <div className="text-sm text-gray-600">
             <p>
               <strong>Business Hours:</strong>
@@ -118,7 +116,6 @@ export default function ContactUsPage() {
         </div>
       </div>
 
-      {/* Contact Form */}
       <section
         id="contact-form"
         ref={formRef}
