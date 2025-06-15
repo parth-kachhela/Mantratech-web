@@ -33,7 +33,7 @@ app.post("/contact", async (req: Request, res: Response) => {
 app.get("/contact", async (req: Request, res: Response) => {
   try {
     const contacts = await prisma.contact.findMany({
-      orderBy: { createdAt: "desc" }, // latest first
+      orderBy: { createdAt: "desc" },
     });
     res.status(200).json(contacts);
   } catch (error) {

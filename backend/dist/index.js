@@ -43,7 +43,7 @@ app.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* (
 app.get("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const contacts = yield prisma.contact.findMany({
-            orderBy: { createdAt: "desc" }, // latest first
+            orderBy: { createdAt: "desc" },
         });
         res.status(200).json(contacts);
     }

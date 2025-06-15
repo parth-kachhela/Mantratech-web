@@ -15,26 +15,44 @@ interface Contact {
   createdAt: string;
 }
 
-export default function AdminDashboard() {
+export default function Dashboard() {
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [deletingIds, setDeletingIds] = useState<string[]>([]); // ✅ added
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     axios
-      .get("https://mantratech-web.onrender.com/contact")
-      .then((res: any) => setContacts(res.data))
-      .catch((err: any) => console.error("Error fetching contacts:", err));
+      .get(`${backendUrl}/contact`)
+      .then((res: any) => {
+        if (Array.isArray(res.data)) {
+          setContacts(res.data);
+        } else {
+          throw new Error("Invalid response format");
+        }
+      })
+      .catch((err: any) => {
+        console.error("Error fetching contacts:", err);
+        setError("Failed to load contacts.");
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const handleDelete = async (id: string) => {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (!confirmDelete) return;
 
+    setDeletingIds((prev) => [...prev, id]); // ✅ start loading for this contact
+
     try {
-      await axios.delete(`https://mantratech-web.onrender.com/contact/${id}`);
+      await axios.delete(`${backendUrl}/contact/${id}`);
       setContacts((prev) => prev.filter((c) => c.id !== id));
     } catch (error) {
       console.error("Delete error:", error);
       alert("Failed to delete contact");
+    } finally {
+      setDeletingIds((prev) => prev.filter((delId) => delId !== id)); // ✅ stop loading
     }
   };
 
@@ -72,7 +90,11 @@ export default function AdminDashboard() {
             Customer Enquiries
           </h2>
 
-          {contacts.length === 0 ? (
+          {loading ? (
+            <p className="text-gray-500 animate-pulse">Loading contacts...</p>
+          ) : error ? (
+            <p className="text-red-600">{error}</p>
+          ) : contacts.length === 0 ? (
             <p className="text-gray-500">No contacts available.</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -107,12 +129,20 @@ export default function AdminDashboard() {
                   <p className="text-xs text-gray-500 mb-3">
                     Created At: {new Date(contact.createdAt).toLocaleString()}
                   </p>
-                  <button
-                    onClick={() => handleDelete(contact.id)}
-                    className="mt-2 bg-[#e60000] text-white px-4 py-1 rounded hover:bg-red-700 transition"
-                  >
-                    Delete
-                  </button>
+
+                  {/* Delete button or loader */}
+                  {deletingIds.includes(contact.id) ? (
+                    <div className="mt-2 text-sm text-gray-500 animate-pulse">
+                      Deleting...
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => handleDelete(contact.id)}
+                      className="mt-2 bg-[#e60000] text-white px-4 py-1 rounded hover:bg-red-700 transition"
+                    >
+                      Delete
+                    </button>
+                  )}
                 </motion.div>
               ))}
             </div>
