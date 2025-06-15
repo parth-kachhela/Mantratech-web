@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
