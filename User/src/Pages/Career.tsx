@@ -178,7 +178,7 @@ export default function Careers() {
             Don’t see a role that fits? Drop your resume and let’s talk.
           </p>
           <a
-            href="mailto:careers@mantratechsystem.com"
+            href="/contact"
             className="inline-block px-6 py-3 bg-white text-[#e60000] rounded-full font-medium hover:bg-gray-100 transition"
           >
             Send Resume
