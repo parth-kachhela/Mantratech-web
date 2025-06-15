@@ -1,10 +1,10 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
 
 const router = Router();
 const prisma = new PrismaClient();
 
-router.post("/contact", async (req, res) => {
+router.post("/contact", async (req: Request, res: Response) => {
   const { firstName, lastName, address, mobile, email, other, enquiryType } =
     req.body;
 
