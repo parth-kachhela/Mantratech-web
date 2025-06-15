@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import { teams, leaders } from "@/lib/utils";
+import { teams } from "@/lib/utils";
 
 export default function AboutUs() {
   return (
@@ -95,39 +95,6 @@ export default function AboutUs() {
       </section>
 
       {/* Leadership Section */}
-      <section className="bg-[url('/leaders-bg.jpg')] bg-cover bg-center bg-no-repeat bg-blend-overlay bg-opacity-80 py-20 px-4 md:px-10">
-        <h2 className="text-4xl font-bold text-center text-[#e60000] mb-10">
-          Our Inspiration & Leadership
-        </h2>
-        <div className="flex justify-center gap-12 flex-wrap">
-          {leaders.map((leader, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              className="relative group text-center text-white w-[250px]"
-            >
-              <img
-                src={leader.image}
-                className="rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500 w-full h-[320px] object-cover"
-                alt={leader.name}
-              />
-              <h3 className="mt-4 text-xl font-semibold group-hover:text-[#e60000] transition-colors duration-300">
-                {leader.name}
-              </h3>
-              <p className="text-sm text-gray-300 group-hover:text-gray-500 transition-colors duration-300">
-                {leader.role}
-              </p>
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                whileHover={{ height: "auto", opacity: 1 }}
-                className="overflow-hidden text-sm text-gray-400 mt-2 transition-all duration-500 ease-in-out"
-              >
-                {leader.bio}
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
       {/* Team Section */}
       <section className="bg-white py-20">
