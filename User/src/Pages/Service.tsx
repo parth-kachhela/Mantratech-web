@@ -3,8 +3,18 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { CheckCircle } from "lucide-react";
 import { services } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/Components/ui/button";
+
+// Inside your Services component:
 
 export default function Services() {
+  const navigate = useNavigate();
+
+  const handleContactRedirect = () => {
+    navigate("/contact", { state: { scrollTo: "contact-form" } });
+  };
+
   return (
     <div className="bg-white text-gray-800">
       <Navbar />
@@ -74,12 +84,12 @@ export default function Services() {
                 </ul>
 
                 {/* Button */}
-                <a
-                  href="/get-service-form"
+                <Button
+                  onClick={handleContactRedirect}
                   className="inline-block px-6 py-2 bg-[#e60000] text-white rounded-lg shadow hover:bg-[#c40000] transition"
                 >
                   Get Service
-                </a>
+                </Button>
               </div>
             </motion.div>
           ))}

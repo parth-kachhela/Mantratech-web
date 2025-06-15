@@ -6,6 +6,8 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { motion } from "framer-motion";
 import { OfficeMap } from "@/Components/OfficeMap";
+import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
@@ -17,6 +19,16 @@ export default function ContactUsPage() {
     other: "",
     enquiryType: "",
   });
+  const location = useLocation();
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (location.state?.scrollTo === "contact-form") {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 300); // delay to allow DOM to mount
+    }
+  }, [location]);
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -107,7 +119,11 @@ export default function ContactUsPage() {
       </div>
 
       {/* Contact Form */}
-      <section className="bg-[#1a1a1a] text-white px-6 sm:px-12 lg:px-32 py-20">
+      <section
+        id="contact-form"
+        ref={formRef}
+        className="bg-[#1a1a1a] text-white px-6 sm:px-12 lg:px-32 py-20"
+      >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-2">Get In Touch</h2>
           <p className="text-gray-300 mb-10">
