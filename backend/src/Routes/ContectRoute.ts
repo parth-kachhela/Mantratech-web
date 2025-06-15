@@ -21,7 +21,7 @@ router.post("/contact", async (req: Request, res: Response) => {
       },
     });
 
-    res.status(201).json({ message: "Contact saved", contact });
+    res.status(200).json({ message: "Contact saved", contact });
   } catch (error) {
     console.error("Contact save error:", error);
     res.status(500).json({ error: "Unable to save contact info" });
