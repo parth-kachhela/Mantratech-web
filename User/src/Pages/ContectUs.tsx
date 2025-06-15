@@ -47,7 +47,7 @@ export default function ContactUsPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post(`${backendUrl}/contact`, formData);
+      const res = await axios.post(`${backendUrl}`, formData);
 
       if (res.status === 200) {
         setSubmitted(true);
