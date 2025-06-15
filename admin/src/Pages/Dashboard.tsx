@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface Contact {
   id: string;
@@ -19,23 +20,25 @@ export default function Dashboard() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [deletingIds, setDeletingIds] = useState<string[]>([]); // ✅ added
+  const [deletingIds, setDeletingIds] = useState<string[]>([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(`${backendUrl}/contact`)
-      .then((res: any) => {
+      .then((res) => {
         if (Array.isArray(res.data)) {
           setContacts(res.data);
         } else {
           throw new Error("Invalid response format");
         }
       })
-      .catch((err: any) => {
+      .catch((err) => {
         console.error("Error fetching contacts:", err);
         setError("Failed to load contacts.");
       })
+      //@ts-ignore
       .finally(() => setLoading(false));
   }, []);
 
@@ -43,7 +46,7 @@ export default function Dashboard() {
     const confirmDelete = window.confirm("Are you sure you want to delete?");
     if (!confirmDelete) return;
 
-    setDeletingIds((prev) => [...prev, id]); // ✅ start loading for this contact
+    setDeletingIds((prev) => [...prev, id]);
 
     try {
       await axios.delete(`${backendUrl}/contact/${id}`);
@@ -52,13 +55,13 @@ export default function Dashboard() {
       console.error("Delete error:", error);
       alert("Failed to delete contact");
     } finally {
-      setDeletingIds((prev) => prev.filter((delId) => delId !== id)); // ✅ stop loading
+      setDeletingIds((prev) => prev.filter((delId) => delId !== id));
     }
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
+    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+      {/* Sidebar - only for desktop */}
       <aside className="w-64 bg-white shadow-md hidden md:block">
         <div className="p-6 text-2xl font-bold text-[#e60000] border-b">
           Mantra<span className="text-black">Tech</span>
@@ -77,12 +80,62 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Navbar */}
         <header className="bg-white shadow flex justify-between items-center px-6 py-4">
-          <h1 className="text-xl font-semibold text-[#e60000]">Admin Panel</h1>
-          <button className="flex items-center text-[#e60000] hover:underline">
-            <LogOut className="mr-2" size={18} />
+          <div className="flex items-center">
+            {/* Hamburger Menu (Mobile only) */}
+            <button
+              className="md:hidden mr-4 focus:outline-none"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <svg
+                className="w-6 h-6 text-[#e60000]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+            <h1 className="text-xl font-semibold text-[#e60000]">
+              Admin Panel
+            </h1>
+          </div>
+
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              navigate("/");
+            }}
+            className="flex items-center text-[#e60000] hover:underline"
+          >
             Logout
           </button>
         </header>
+
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white shadow px-6 py-4 space-y-3 border-b">
+            <a
+              href="#"
+              className="block text-gray-700 hover:text-[#e60000]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Profile
+            </a>
+            <a
+              href="#"
+              className="block text-gray-700 hover:text-[#e60000]"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contacts
+            </a>
+          </div>
+        )}
 
         {/* Contacts Section */}
         <main className="p-6 overflow-y-auto">

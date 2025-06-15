@@ -18,3 +18,10 @@ model Contact {
   enquiryType  String
   createdAt    DateTime @default(now())
 }
+model Admin {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  password  String   // Store hashed password (not plain)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

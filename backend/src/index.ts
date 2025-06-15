@@ -1,8 +1,11 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
 const prisma = new PrismaClient();
 const app = express();
+const JWT_SECRET = process.env.JWT_SECRET || "mantra_secret";
+
 app.use(cors());
 app.use(express.json());
 
@@ -41,7 +44,7 @@ app.get("/contact", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Unable to fetch contacts" });
   }
 });
-app.delete("/contact/:id", async (req, res) => {
+app.delete("/contact/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
     await prisma.contact.delete({ where: { id } });
@@ -51,6 +54,29 @@ app.delete("/contact/:id", async (req, res) => {
     res.status(500).json({ error: "Unable to delete contact" });
   }
 });
+//@ts-ignore
+app.post("/login", async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+
+  try {
+    const admin = await prisma.admin.findFirst({
+      where: { username },
+    });
+
+    if (!admin) return res.status(401).json({ message: "Invalid credentials" });
+
+    if (admin.password !== password) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ id: admin.id }, JWT_SECRET, { expiresIn: "1d" });
+    return res.json({ token });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+});
+
 app.listen(8080, () => {
   console.log("listing port at 8080");
 });
