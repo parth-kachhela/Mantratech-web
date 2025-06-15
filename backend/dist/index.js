@@ -40,6 +40,29 @@ app.post("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res.status(500).json({ error: "Unable to save contact info" });
     }
 }));
+app.get("/contact", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const contacts = yield prisma.contact.findMany({
+            orderBy: { createdAt: "desc" }, // latest first
+        });
+        res.status(200).json(contacts);
+    }
+    catch (error) {
+        console.error("Failed to fetch contacts:", error);
+        res.status(500).json({ error: "Unable to fetch contacts" });
+    }
+}));
+app.delete("/contact/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        yield prisma.contact.delete({ where: { id } });
+        res.status(200).json({ message: "Contact deleted" });
+    }
+    catch (error) {
+        console.error("Failed to delete contact:", error);
+        res.status(500).json({ error: "Unable to delete contact" });
+    }
+}));
 app.listen(8080, () => {
     console.log("listing port at 8080");
 });
