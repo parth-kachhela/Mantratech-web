@@ -21,7 +21,7 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold">Contact</h4>
           <p className="text-sm text-gray-400 mt-2">
-            Email: contact@mantratechsystem.com
+            Email: mantratechsystem@gmaill.com
             <br />
             Phone: +91-8200197878
           </p>

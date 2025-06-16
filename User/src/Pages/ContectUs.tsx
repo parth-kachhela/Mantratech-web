@@ -105,8 +105,8 @@ export default function ContactUsPage() {
               <p>
                 <strong>Support:</strong>
               </p>
-              <p>📞 +91-9876543210</p>
-              <p>📧 support@mantratechsystem.com</p>
+              <p>📞 +91-8200197878</p>
+              <p>📧 mantratechsystem@gmail.com</p>
             </div>
           </div>
         </div>
