@@ -7,7 +7,7 @@ A professional, full-stack business website built for **MantraTechSystem**, show
 ## 🌐 Live Preview
 
 > https://mantratechsystem.netlify.app  
-> Backend hosted on: https://mantratech-web.onrender.com
+
 
 ---
 
