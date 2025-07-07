@@ -16,7 +16,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/70 z-50 border-b border-gray-200 shadow-sm backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-2 py-2 flex justify-between items-center">
         {/* Logo */}
         <div
           className="flex items-center space-x-12 cursor-pointer"
@@ -56,7 +56,7 @@ export default function Navbar() {
       <div
         className={`md:hidden transition-all duration-1000 ease-in-out overflow-hidden ${
           menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        } bg-white backdrop-blur-md shadow-xl px-6 py-4`}
+        } bg-white backdrop-blur-md shadow-xl px-2 py-2`}
       >
         <ul className="flex flex-col space-y-4 text-base font-semibold text-gray-800">
           {menuItems.map((item, index) => (

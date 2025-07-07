@@ -76,10 +76,10 @@ export default function ContactUsPage() {
       <Navbar />
 
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.9 }}
+        viewport={{ once: false }}
         className="mt-40 mb-20 px-6 sm:px-12 lg:px-32 text-left"
       >
         <h1 className="text-5xl font-bold text-gray-800 mb-4">Contact Us</h1>
@@ -89,7 +89,7 @@ export default function ContactUsPage() {
         </p>
       </motion.div>
 
-      <div className="flex flex-col md:flex-row items-start justify-between p-6 md:p-10 bg-gradient-to-br from-gray-100 to-white gap-10">
+      <div className="flex flex-col md:flex-row items-start justify-between p-6 md:p-10 bg-gradient-to-br from-gray-400 to-white gap-10">
         <div className="md:w-1/2">
           <h3 className="text-3xl font-bold text-gray-800 mb-4">Our Offices</h3>
           <p className="text-gray-600 mb-6">
